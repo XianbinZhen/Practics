@@ -53,7 +53,5 @@ def count_invalid_parenthesis(string):
     return count
 
 
-# Fill this in.
-
 print(count_invalid_parenthesis("()())())()"))
 # 1
