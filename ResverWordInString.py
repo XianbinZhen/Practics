@@ -16,17 +16,31 @@
 # print Solution().reverseWords("The cat in the hat")
 # # ehT tac ni eht tah
 
+# class Solution:
+#     def reverseWords(self, str):
+#         result_str = str.split(" ")
+#         for i in range(len(result_str)):
+#             result_str[i] = result_str[i][::-1]
+#         result = result_str[0]
+#         result_str = result_str[1:]
+#         while result_str:
+#             result += " "
+#             result += result_str[0]
+#             result_str = result_str[1:]
+#         return result
 class Solution:
     def reverseWords(self, str):
-        result_str = str.split(" ")
-        for i in range(len(result_str)):
-            result_str[i] = result_str[i][::-1]
-        result = result_str[0]
-        result_str = result_str[1:]
-        while result_str:
-            result += " "
-            result += result_str[0]
-            result_str = result_str[1:]
+        result = ''
+        word = ''
+        for c in str:
+            if c == " ":
+                result += word[::-1]
+                result += c
+                word = ''
+            else:
+                word += c
+        if word:
+            result += word[::-1]
         return result
 
 
