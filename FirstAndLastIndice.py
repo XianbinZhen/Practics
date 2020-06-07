@@ -29,8 +29,15 @@ class Solution:
         result = [-1, -1]
         if target in arr:
             result[0] = arr.index(target)
-            arr.reverse()
-            result[1] = len(arr) - arr.index(target) - 1
+            # arr.reverse()
+            # result[1] = len(arr) - arr.index(target) - 1
+            i = len(arr) - 1
+            while i > 0:
+                if arr[i] == target:
+                    result[1] = i
+                    i = 0
+                i -= 1
+
         return result
 
 
