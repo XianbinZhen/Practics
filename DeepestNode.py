@@ -51,28 +51,31 @@ def deepest(root):
         else:
             return 0
 
-    def find_node_in_depth(root, depth):
+    def find_node_in_depth(root, depth, result):
         # print("depth: ", depth)
         # print("node: ", root.val)
         if depth == 1:
             # print("return: ", root.val)
-            return root
+            result.append(root)
         else:
             if root.left:
-                return find_node_in_depth(root.left, depth - 1)
+                find_node_in_depth(root.left, depth - 1, result)
             if root.right:
-                return find_node_in_depth(root.right, depth - 1)
-
+                find_node_in_depth(root.right, depth - 1, result)
+        return result
     depth = tree_depth(root)
-
-    node = find_node_in_depth(root, depth)
-    return (node, depth)
+    result = []
+    find_node_in_depth(root, depth, result)
+    return_result = []
+    for node in result:
+        return_result.append((node, depth))
+    return return_result
 
 
 root = Node('a')
 root.left = Node('b')
 root.left.left = Node('d')
-# root.left.right = Node('e')
+root.left.right = Node('e')
 root.right = Node('c')
 
 print(deepest(root))
